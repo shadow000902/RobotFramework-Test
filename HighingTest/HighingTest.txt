@@ -1,0 +1,18 @@
+*** Settings ***
+Library           AppiumLibrary
+
+*** Test Cases ***
+LoginTest
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=E:/RobotFramework/HighingTest/Highing_3.3.7.apk
+    ${orig timeout} =    Set Appium Timeout    8 seconds
+    Capture Page Screenshot
+    Wait until Page Contains Element    id=cn.highing.hichat:id/guide_index1
+    Capture Page Screenshot
+    Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1400    1280    40    1280    duration=2000
+    click element    id=cn.highing.hichat:id/iv_guide_enter
+    input text    id=cn.highing.hichat:id/et_login_mobile    15558135526
+    input password    id=cn.highing.hichat:id/et_login_pwd    620120
+    Hide Keyboard
+    click element    id=cn.highing.hichat:id/btn_login

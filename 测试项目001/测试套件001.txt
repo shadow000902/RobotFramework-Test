@@ -1,0 +1,29 @@
+*** Settings ***
+Library           AppiumLibrary
+
+*** Test Cases ***
+TestCase001-打印
+    log    hello world!
+
+TestCase002-定义变量
+    ${a}    Set variable    hello world!
+    log    ${a}
+
+TestCase003-连接对象
+    ${hi}    Catenate    hello    world    !
+    log    ${hi}
+
+TestCase004-连接对象
+    ${hi}    Catenate    SEPARATOR=---    hello    world    !
+    log    ${hi}
+
+TestCase005-定义列表
+    ${abc}    Create List    a    b    c
+    log    ${abc}
+
+TestCase006-定义列表
+    @{abc}    Create List    a    b    c
+    log many    @{abc}
+
+TestCase007-打开chrome
+    Open Browser    http://www.baidu.com    googlechrome
