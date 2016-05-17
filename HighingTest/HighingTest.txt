@@ -3,10 +3,8 @@ Library           AppiumLibrary
 
 *** Test Cases ***
 LoginTest
-    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=E:/RobotFramework/HighingTest/Highing_3.3.7.apk
-    ${orig timeout} =    Set Appium Timeout    8 seconds
-    Capture Page Screenshot
-    Wait until Page Contains Element    id=cn.highing.hichat:id/guide_index1
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=E:/Projects/RobotFramework-Test/HighingTest/Highing_3.3.7.apk
+    Wait until Page Contains Element    id=cn.highing.hichat:id/guide_index1    10    元素没有出现
     Capture Page Screenshot
     Swipe    1400    1280    40    1280    duration=2000
     Swipe    1400    1280    40    1280    duration=2000
@@ -16,3 +14,21 @@ LoginTest
     input password    id=cn.highing.hichat:id/et_login_pwd    620120
     Hide Keyboard
     click element    id=cn.highing.hichat:id/btn_login
+    Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    20    元素没有出现
+    Capture Page Screenshot
+    Close application
+
+PostMassage
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=E:/Projects/RobotFramework-Test/HighingTest/Highing_3.3.7.apk
+    Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    10    元素没有出现
+    Capture Page Screenshot
+    click element    xpath=//android.widget.TextView[contains(@text, "每日频道")]
+    click element    id=cn.highing.hichat:id/topic_text_send
+    Capture Page Screenshot
+    click element    id=cn.highing.hichat:id/content_text
+    Input Text    id=cn.highing.hichat:id/content_text    test
+    Capture Page Screenshot
+    click element    id=cn.highing.hichat:id/header_btn_right
+    Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    20    元素没有出现
+    Capture Page Screenshot
+    Close application
