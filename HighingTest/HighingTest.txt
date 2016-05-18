@@ -3,32 +3,44 @@ Library           AppiumLibrary
 
 *** Test Cases ***
 LoginTest
-    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=E:/Projects/RobotFramework-Test/HighingTest/Highing_3.3.7.apk
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 5    app=D:\app-Test-debug.apk
+    #Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=C:\Highing\app\build\outputs\apk\app-Test-debug.apk
     Wait until Page Contains Element    id=cn.highing.hichat:id/guide_index1    10    元素没有出现
     Capture Page Screenshot
-    Swipe    1400    1280    40    1280    duration=2000
-    Swipe    1400    1280    40    1280    duration=2000
-    Swipe    1400    1280    40    1280    duration=2000
+    #Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1060    960    20    960    duration=2000
+    #Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1060    960    20    960    duration=2000
+    #Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1060    960    20    960    duration=2000
     click element    id=cn.highing.hichat:id/iv_guide_enter
-    input text    id=cn.highing.hichat:id/et_login_mobile    15558135526
-    input password    id=cn.highing.hichat:id/et_login_pwd    620120
-    Hide Keyboard
+    input text    id=cn.highing.hichat:id/et_login_mobile    18116137476
+    input password    id=cn.highing.hichat:id/et_login_pwd    123456
+    #Hide Keyboard
     click element    id=cn.highing.hichat:id/btn_login
     Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    20    元素没有出现
     Capture Page Screenshot
     Close application
 
 PostMassage
-    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=E:/Projects/RobotFramework-Test/HighingTest/Highing_3.3.7.apk
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 5    app=D:\app-Test-debug.apk
+    #Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=C:\Highing\app\build\outputs\apk\app-Test-debug.apk
     Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    10    元素没有出现
     Capture Page Screenshot
     click element    xpath=//android.widget.TextView[contains(@text, "每日频道")]
+    Capture Page Screenshot
+    Set Appium Timeout    5
+    Click A Point    540    960
+    Set Appium Timeout    5
     click element    id=cn.highing.hichat:id/topic_text_send
     Capture Page Screenshot
-    click element    id=cn.highing.hichat:id/content_text
+    Click A Point    540    960
+    Click A Point    540    960
+    Click A Point    540    960
+    Capture Page Screenshot
     Input Text    id=cn.highing.hichat:id/content_text    test
     Capture Page Screenshot
     click element    id=cn.highing.hichat:id/header_btn_right
-    Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    20    元素没有出现
+    Wait until Page Contains Element    id=cn.highing.hichat:id/topic_text_send    20    元素没有出现
     Capture Page Screenshot
     Close application
