@@ -1,0 +1,39 @@
+*** Settings ***
+Library           AppiumLibrary
+Resource          登录用户名密码.txt
+
+*** Test Cases ***
+FirstLoginTest
+    [Documentation]    安装完app后，首次启动app，需要滑动过启动页，并进行登录操作。
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 5    app=D:\highing.apk
+    #Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=D:\highing.apk
+    Wait until Page Contains Element    id=cn.highing.hichat:id/guide_index1    10    元素没有出现
+    Capture Page Screenshot
+    #Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1060    960    20    960    duration=2000
+    #Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1060    960    20    960    duration=2000
+    #Swipe    1400    1280    40    1280    duration=2000
+    Swipe    1060    960    20    960    duration=2000
+    click element    id=cn.highing.hichat:id/iv_guide_enter
+    input text    id=cn.highing.hichat:id/et_login_mobile    18116137476
+    input password    id=cn.highing.hichat:id/et_login_pwd    123456
+    #Hide Keyboard
+    click element    id=cn.highing.hichat:id/btn_login
+    Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    20    元素没有出现
+    Capture Page Screenshot
+    Close application
+
+FiveException
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=D:\highing.apk
+    Wait until Page Contains Element    id=cn.highing.hichat:id/btn_login    10    元素没有出现
+    Capture Page Screenshot
+    Clear Text    id=cn.highing.hichat:id/et_login_mobile
+    input text    id=cn.highing.hichat:id/et_login_mobile    ${mobile}
+    Clear Text    id=cn.highing.hichat:id/et_login_pwd
+    input password    id=cn.highing.hichat:id/et_login_pwd    ${password}
+    #Hide Keyboard
+    click element    id=cn.highing.hichat:id/btn_login
+    Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    10    元素没有出现
+    Capture Page Screenshot
+    Close application
