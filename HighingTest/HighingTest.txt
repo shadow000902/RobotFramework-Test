@@ -2,7 +2,7 @@
 Library           AppiumLibrary
 
 *** Test Cases ***
-LoginTest
+FirstLoginTest
     Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 5    app=D:\app-Test-debug.apk
     #Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=C:\Highing\app\build\outputs\apk\app-Test-debug.apk
     Wait until Page Contains Element    id=cn.highing.hichat:id/guide_index1    10    元素没有出现
@@ -22,7 +22,7 @@ LoginTest
     Capture Page Screenshot
     Close application
 
-PostMassage
+FirstPostMassage
     Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 5    app=D:\app-Test-debug.apk
     #Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=C:\Highing\app\build\outputs\apk\app-Test-debug.apk
     Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    10    元素没有出现
@@ -30,13 +30,18 @@ PostMassage
     click element    xpath=//android.widget.TextView[contains(@text, "每日频道")]
     Capture Page Screenshot
     Set Appium Timeout    5
-    Click A Point    540    960
-    Set Appium Timeout    5
+    #Click A Point    540    960
+    click element    xpath=//android.widget.ImageView
+    Wait until Page Contains Element    id=cn.highing.hichat:id/topic_text_send    10    元素没有出现
     click element    id=cn.highing.hichat:id/topic_text_send
+    Wait until Page Contains Element    id=cn.highing.hichat:id/iv_comment_tips    10    元素没有出现
     Capture Page Screenshot
-    Click A Point    540    960
-    Click A Point    540    960
-    Click A Point    540    960
+    click element    id=cn.highing.hichat:id/iv_comment_tips
+    Wait until Page Contains Element    id=cn.highing.hichat:id/iv_gps_tips    10    元素没有出现
+    click element    id=cn.highing.hichat:id/iv_gps_tips
+    Wait until Page Contains Element    id=cn.highing.hichat:id/iv_comment_tips    10    元素没有出现
+    click element    id=cn.highing.hichat:id/iv_comment_tips
+    Wait until Page Contains Element    id=cn.highing.hichat:id/content_text    10    元素没有出现
     Capture Page Screenshot
     Input Text    id=cn.highing.hichat:id/content_text    test
     Capture Page Screenshot
