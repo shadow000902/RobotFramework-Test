@@ -1,8 +1,16 @@
 *** Keywords ***
 用户名and密码
     [Arguments]    ${mobile}    ${password}
-    18116137476    1234567    #用户名或密码错误
-    1811613747    123456    #电话号码格式错误
-    18116137476    12345    #密码不能为空且不少于6位
-    18116137477    123456    #用户不存在
-    18116137476    123456    #登录成功
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6.0    deviceName=nexus 6P    app=D:\highing.apk
+    Wait until Page Contains Element    id=cn.highing.hichat:id/btn_login    10    元素没有出现
+    Capture Page Screenshot
+    Clear Text    id=cn.highing.hichat:id/et_login_mobile
+    input text    id=cn.highing.hichat:id/et_login_mobile    ${mobile}
+    Clear Text    id=cn.highing.hichat:id/et_login_pwd
+    input password    id=cn.highing.hichat:id/et_login_pwd    ${password}
+    #Hide Keyboard
+    click element    id=cn.highing.hichat:id/btn_login
+    set appium timeout    5
+    #Wait until Page Contains Element    id=cn.highing.hichat:id/channel_header    10    元素没有出现
+    Capture Page Screenshot
+    Close application
